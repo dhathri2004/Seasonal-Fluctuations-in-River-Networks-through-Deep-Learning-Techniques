@@ -18,4 +18,4 @@ Machine learning model for predicting water level percentage.
 Environmental impact assessment based on comparative analysis of satellite images.
 User-friendly web interface for uploading and analyzing satellite images.
 Purpose:
-This project aims to provide a tool for environmental monitoring and analysis using satellite imagery. It facilitates the detection of water bodies and assessment of environmental impacts, contributing to better decision-making for resource management and disaster response.The detection in the satellite images is done using the Imgae segmentation and using the masked images of the satellite images .
+This project aims to provide a tool for environmental monitoring and analysis using satellite imagery. It facilitates the detection of water bodies and assessment of environmental impacts, contributing to better decision-making for resource management and disaster response.The detection in the satellite images is done using the Imgae segmentation and using the masked images of the satellite images.
