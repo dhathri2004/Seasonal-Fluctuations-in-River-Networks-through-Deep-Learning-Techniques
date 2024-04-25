@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Detection</title>
+  <style>
+    body {
+      font-family : "Times New Roman", Times, serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(to bottom,#646363, #333333, #000000);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.8); /* White background with 80% opacity */
+      padding: 40px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .image-wrapper {
+      margin-bottom: 20px;
+    }
+
+    .image-preview {
+      max-width: 300px;
+      margin-bottom: 20px;
+    }
+
+    .image-input {
+      display: none;
+    }
+
+    .upload-button {
+      cursor: pointer;
+      color: white;
+      background-color: #2b12ca;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+
+    #submit-button {
+      padding: 10px 20px;
+      background-color: #12bc4d;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family:"Times New Roman", Times, serif ;
+    }
+
+    #submit-button:hover {
+      background-color: #00b32d;
+    }
+
+    h1, h2, label {
+      color: rgb(11, 10, 10);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Seasonal Fluctuation</h1>
+    <h2>Select Images</h2>
+    <form id="uploadForm" action="/predict" method="post" enctype="multipart/form-data">
+      <div class="image-wrapper">
+        <input type="file" id="image1" class="image-input" name="image1" accept="image/*">
+        <label for="image1" class="upload-button">Choose File 1</label>
+        <br>
+        <img class="image-preview" src="#" alt="">
+      </div>
+      <div class="image-wrapper">
+        <input type="file" id="image2" class="image-input" name="image2" accept="image/*">
+        <label for="image2" class="upload-button">Choose File 2</label>
+        <br>
+        <img class="image-preview" src="#" alt="">
+      </div>
+      <button type="submit" id="submit-button">Predict</button>
+    </form>
+  </div>
+
+  <script>
+    const imageInputs = document.querySelectorAll('.image-input');
+    const imagePreviews = document.querySelectorAll('.image-preview');
+
+    imageInputs.forEach((input, index) => {
+      input.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            imagePreviews[index].src = e.target.result;
+          }
+          reader.readAsDataURL(file);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

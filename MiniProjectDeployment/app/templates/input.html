@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Detection</title>
+  <style>
+    body {
+      font-family : "Times New Roman", Times, serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(to bottom,#646363, #333333, #000000);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.8); /* White background with 80% opacity */
+      padding: 40px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    #image-preview {
+      max-width: 300px;
+      margin-bottom: 20px;
+    }
+
+    #image-input {
+      display: none;
+    }
+
+    #submit-button {
+      padding: 10px 20px;
+      background-color: #12bc4d;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family:"Times New Roman", Times, serif ;
+    }
+
+    #submit-button:hover {
+      background-color: #00b32d;
+    }
+
+    h1, h2, label {
+      color: rgb(11, 10, 10);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Water Detection</h1>
+    <h2>Select an Image</h2>
+    <form id="uploadForm" action="/predict" method="post" enctype="multipart/form-data">
+      <input type="file" id="image-input" name= "image" accept="image/*">
+      <label for="image-input" style="cursor: pointer;color:white; background-color: #2b12ca; padding: 5px 10px; border-radius: 3px;">Choose File</label>
+      <br>
+      <br>
+      <img id="image-preview" src="#" alt="">
+      <br>
+      <button type="submit" id="submit-button">Predict</button>
+    </form>
+  </div>
+
+  <script>
+    const imageInput = document.getElementById('image-input');
+    const imagePreview = document.getElementById('image-preview');
+
+    imageInput.addEventListener('change', function() {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          imagePreview.src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+      }
+    });
+
+    document.getElementById('image-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+    });
+  </script>
+</body>
+</html>

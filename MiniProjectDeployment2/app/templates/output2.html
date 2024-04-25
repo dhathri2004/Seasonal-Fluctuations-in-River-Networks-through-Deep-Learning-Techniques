@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Detection</title>
+  <style>
+    body {
+      font-family: "Times New Roman", Times, serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(to bottom,#646363, #333333, #000000);
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.8); /* White background with 80% opacity */
+      padding: 40px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333333; /* Dark text color */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Detection</h1>
+    <div id="output">
+      <!-- Output will be displayed here -->
+      {% if session.WaterDetectionOutput %}
+        <p>{{ session.WaterDetectionOutput }}</p>
+      {% else %}
+        <p>Prediction not available</p>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>
